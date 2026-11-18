@@ -2,36 +2,19 @@
 Open-source code of 《Gated Graph Attention Network Based on Feature Embedding and Feature Attention for Identifying Geochemical Anomalies: A Case Study of the Three Rivers Region in Southwest China》
 # Geochemical-Mineral-Prospectivity
 
-基于地球化学元素数据与图神经网络（GAT / GGAT / EFA-GGAT）的成矿潜力预测。
+Based on geochemical element data and graph neural networks (GAT / GGAT / EFA-GGAT) for mineralization potential prediction.
 
-本仓库包含地球化学数据预处理脚本，以及三种图神经网络模型的训练与网格预测脚本。输入数据为包含采样点类型、经纬度和多元素含量的 Excel 表；输出为规则网格上的成矿潜力预测值，可用于 QGIS / ArcGIS 后续制图与分析。
-
-
----
-
-## 项目简介
-
-本项目面向地球化学成矿潜力预测，主要包括两部分：
-
-1. **数据预处理**：读取原始地球化学 Excel，解析检测限、逗号小数等特殊数值格式，删除缺失率过高的元素列，中位数填补缺失值，并对主量元素做 CLR 变换、微量元素做 log10 变换，稀土元素保持原值。
-2. **图神经网络预测**：将研究区划分为规则网格，聚合网格内样本特征与标签比例，对无样本网格使用普通克里金插值初始化特征，构建 KNN 图，使用 GAT、GGAT 或 EFA-GGAT 预测每个网格的成矿潜力。
-
-仓库中的原始数据样例包含 `Au-Cu`、`Cu`、`Cu-Mo`、`Ag-Pb-Zn`、`Barren` 等类型。代码中将 `Barren` 映射为 0，其他类型映射为 1。
-
-
-***注：由于环境不同，代码复现的预测结果会表现出细微差别，这种情况属于误差接受范围。
+This repository contains scripts for geochemical data preprocessing, as well as scripts for training and grid prediction using three graph neural network models. The input data are Excel tables containing sample point types, longitude and latitude, and multi-element concentrations; the output is the mineralization potential prediction values on a regular grid, which can be used for subsequent mapping and analysis in QGIS / ArcGIS.
 
 ---
 
-## 仓库结构
+# Project Overview
+This project focuses on geochemical mineralization potential prediction and mainly consists of two parts:
 
-```text
-.
+1.**Data preprocessing**: Read the raw geochemical Excel data, parse special numeric formats such as detection limits and comma decimal separators, remove element columns with excessively high missing rates, impute missing values with the median, apply CLR transformation to major elements and log10 transformation to trace elements, and retain the original values for rare earth elements.
 
-├── Data_Preprocessing.py
-├── Gat_Prediction.py
-├── GGat_Prediction.py
-├── EFA-GGat_Prediction.py
-├── Original geochemical elements.xlsx
-├── Preprocessed geochemical elements—sheet2.xlsx
-├── README.md
+2.**Graph neural network prediction**: Divide the study area into a regular grid, aggregate sample features and label proportions within each grid cell, initialize features for grid cells without samples using ordinary kriging interpolation, construct a KNN graph, and use GAT, GGAT, or EFA-GGAT to predict the mineralization potential of each grid cell.
+
+The sample raw data in the repository include types such as Au-Cu, Cu, Cu-Mo, Ag-Pb-Zn, and Barren. In the code, Barren is mapped to 0 and all other types are mapped to 1.
+
+Note: Due to differences in environments, the prediction results reproduced by the code may show minor differences, which fall within the acceptable error range.

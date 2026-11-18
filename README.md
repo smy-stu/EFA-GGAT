@@ -1,6 +1,6 @@
 # EFA-GGAT
 Open-source code of 《Gated Graph Attention Network Based on Feature Embedding and Feature Attention for Identifying Geochemical Anomalies: A Case Study of the Three Rivers Region in Southwest China》
-# Geochemical-GNN-Mineral-Prospectivity
+# Geochemical-Mineral-Prospectivity
 
 基于地球化学元素数据与图神经网络（GAT / GGAT / EFA-GGAT）的成矿潜力预测。
 
@@ -18,11 +18,12 @@ Open-source code of 《Gated Graph Attention Network Based on Feature Embedding 
 
 仓库中的原始数据样例包含 `Au-Cu`、`Cu`、`Cu-Mo`、`Ag-Pb-Zn`、`Barren` 等类型。代码中将 `Barren` 映射为 0，其他类型映射为 1。
 
+
+***注：由于环境不同，代码复现的预测结果会表现出细微差别，这种情况属于误差接受范围。
+
 ---
 
 ## 仓库结构
-
-当前脚本可放在仓库根目录。建议后续整理为如下结构：
 
 ```text
 .
